@@ -53,3 +53,5 @@ DoublyLinkedList.prototype.pop () {
 
   return returnValue;
 }
+
+// remove a node at a specific position

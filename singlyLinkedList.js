@@ -12,6 +12,7 @@ function SinglyLinkedList (val) {
   return this;
 }
 
+// add node if tail is known
 SinglyLinkedList.prototype.push (val) {
   var node = new Node (val, null);
   if (!this.head) {
@@ -23,5 +24,52 @@ SinglyLinkedList.prototype.push (val) {
   };
 
   this.length++;
-  return this;
+  return node;
+}
+
+// add node if tail is unknown
+SinglyLinkedList.prototype.add (val) {
+  var newNode = new Node (val, null);
+
+  if (!this.head) {
+    this.head = newNode;
+    this.length++;
+    return newNode;
+  } else {
+    var currNode = this.head;
+    while (currNode.next !== null) {
+      currNode = currNode.next;
+    };
+    currNode.next = newNode;
+    this.length++;
+    return newNode;
+  }
+}
+
+// search for a node value
+SinglyLinkedList.prototype.searchVal (val) {
+  if (!this.head) {
+    return undefined
+  } else {
+    var currNode = this.head;
+    while (currNode.val !== val) {
+      currNode = currNode.next;
+    };
+    return currNode;
+  }
+}
+
+// search for a node at a specific position
+SinglyLinkedList.prototype.searchPos (pos) {
+  if (!this.head || pos>this.length) {
+    return "no node at this position"
+  } else {
+    var currNode = this.head;
+    var count = 1;
+    while (count < pos) {
+      currNode = currNode.next;
+      count++;
+    };
+    return currNode;
+  }
 }
