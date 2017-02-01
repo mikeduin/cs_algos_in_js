@@ -17,15 +17,3 @@ Tree.prototype.traverseDFPre = function () {
 
   return arr;
 }
-
-// traverse w/callback for added functionality
-
-Tree.prototype.traverseDFPreCallback = function (callback) {
-  (function recurse(currentNode){
-    for (var i=0; i<currentNode.children.length; i++){
-      recurse(currentNode.children[i]);
-    }
-
-    callback(currentNode);
-  })(this.root)
-};
